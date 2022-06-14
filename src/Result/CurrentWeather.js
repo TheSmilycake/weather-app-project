@@ -1,7 +1,8 @@
 import React from 'react';
 // import reactIcon from './react-brands.svg'
-import sunIcon from './sun-solid.svg'
 
+import { WiHumidity} from 'weather-icons-react';
+import WeatherIcon from './WeatherIcon';
 export default function CurrentWeather({ current }) {
 
     // if (props.weatherData) {
@@ -17,17 +18,17 @@ export default function CurrentWeather({ current }) {
         <div className="CurrentWeather">
             <div className="row align-items-center">
                 <div className="col-4 p-3">
-                    <img src={sunIcon} className="img-fluid" alt="reacticon" />
+                    <WeatherIcon icon={current.weatherIcon}/>
                 </div>
                 <div className="col temp">
                     {current.temp}℃ | ℃
                 </div>
             </div>
             <div className="row fs-5">
-                thunderstorm with heavy drizzle
+                {current.description}
             </div>
-            <div className="row fs-5">
-                Luftfeuchte: {current.humidity}% <br />Wind: {current.wind} km/h
+            <div className=" fs-5">
+            <span ><WiHumidity size={80} color="#00ffaa"/></span> {current.humidity}% <br />Wind: {current.wind} km/h
             </div>
 
         </div>);

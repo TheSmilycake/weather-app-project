@@ -2,16 +2,7 @@ import React from 'react';
 import './Result.css'
 import CurrentWeather from './CurrentWeather'
 
-export default function Result(props) {
-    // if (props.weatherData) {
-    //     return (<div className="Result mt-5">
-    //         <div>{props.weatherData}</div>
-    //     </div>);
-    // } else {
-    //     return (<div className="Result mt-5">
-    //      RESULT
-    //     </div>);
-    // }
+export default function Result({weatherData}) {
     function toWeekday(day) {
       switch (day) {
         case 0: return "Sonntag";
@@ -25,25 +16,9 @@ export default function Result(props) {
 
       
     }
-    let weatherData = {
-      "city": "Solingen",
-      "timestamp": new Date(1655022344 *1000),
-      "CountryCode": "DE",
-      "current": {
-          "desc": "clear sky",
-          "temp": 20,
-          "humidity": 30,
-          "wind": 5.81,
-          "weatherCode": 201,
-          "weatherIcon": "20d"
-      },
-      "forecast": {
-          "today": {},
-          "nextDays": [{},{},{},{}]
-      }
-  };
 
-  
+
+  if(weatherData != "Miau") {
       return (<div className="Result mx-1">
         <div className="d-flex justify-content-between align-items-end">
           <span className="fs-3">{weatherData.CountryCode}, {weatherData.city}</span>
@@ -55,5 +30,6 @@ export default function Result(props) {
           
         </div>
         <CurrentWeather current={weatherData.current}/>
-        </div>);
+        </div>);}
+        else  { return <div className="Result"/>;}
 }

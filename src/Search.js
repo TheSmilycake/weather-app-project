@@ -13,13 +13,35 @@ export default function Search(props) {
         event.preventDefault();
         const apiKey = "cf9b8c1615a0fa6c1dcb29c5a1e4698f";
         const unit = "metric";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
-        axios.get(apiUrl).then(handleResponse);
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=DE&units=${unit}&appid=${apiKey}`;
+        axios.get(apiUrl).then(handleResponse).catch(error => {
+            if(error.response) {
+                console.log(error.response);
+            }
+        });
     }
 
     function handleResponse(response) {
-        console.log(response.data);
-        // return props.getData(response.data);
+console.log(response.data);
+        const weatherData = {
+            "city": response.data.name,
+            "timestamp": new Date(response.data.dt * 1000),
+            "CountryCode": response.data.sys.country,
+            "current": {
+                "description": response.data.weather[0].description,
+                "temp": Math.round(response.data.main.temp),
+                "humidity": response.data.main.humidity,
+                "wind": Math.round(response.data.wind.speed * 3.6),
+                "weatherID": response.data.weather[0].id,
+                "weatherIcon": response.data.weather[0].icon
+            },
+            "forecast": {
+                "today": {},
+                "nextDays": [{},{},{},{}]
+            }
+        }
+    
+        return props.getData(weatherData);
     }
 
     return (
