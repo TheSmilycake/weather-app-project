@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import Search from './Search'
-import Result  from './Result'
+import Result  from './Result/Result'
 function App() {
     const [weatherData, setWeatherData] = useState("Miau");
     function updateWeatherData(apiResponse) {
@@ -11,6 +11,9 @@ function App() {
 
     return (
         <div className="App">
+            <header>
+                <h1 className="WetterAppTitle bg-info">WetterApp</h1>
+            </header>
             <Search getData={updateWeatherData}/>
             <Result weatherData={weatherData}/>
         </div>

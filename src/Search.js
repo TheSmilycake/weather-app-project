@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Search.css'
 
 export default function Search(props) {
     const [city, setCity] = useState("Solingen");
@@ -23,9 +24,9 @@ export default function Search(props) {
 
     return (
         <div className="SearchForm">
-            <form onSubmit={searchCity}>
-                <input type="text" onChange={updateCity}/>
-                <input type="submit"/>
+            <form className="d-flex" onSubmit={searchCity}>
+                <input className="border-info form-control me-2" type="text" onChange={updateCity}/>
+                <input className="btn btn-info" type="submit" value="Search"/>
             </form>
         </div>
     );
