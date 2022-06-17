@@ -1,5 +1,54 @@
 
+.Result {
+   margin: 20px;
+    padding-bottom: 20px;
 
+}
+.CurrentWeather {
+    gap: 10px;
+    display: flex;
+}
+
+
+.CurrentWeather ul {
+    list-style: none;
+}
 .CurrentWeather .temp {
     font-size: 3rem;
+}
+
+.TimestampToDate {
+    font-size: 1rem;
+}
+
+.currentTemp {
+    font-size: 3rem;
+}
+
+.currentDesc {
+    /*font-size: 3rem;*/
+}
+.CurrentWeatherItem.row {
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.value {
+    min-width: fit-content;
+   flex-basis: 25%;
+    text-align: center;
+
+}
+
+
+.Humidity {
+    border-top: solid 1px #00CCFF;
+}
+.Windspeed {
+    border-top: solid 1px #99CC99;
+}
+.Sunrise {
+    border-top: solid 1px #FFCC00;
+}
+.Sunset {
+    border-top: solid 1px #FF9999;
 }

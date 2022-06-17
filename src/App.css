@@ -1,18 +1,14 @@
 
 .App {
-  border: 1px gray solid;
-    width: 385px;
-    height: 800px;
+
+ box-shadow: #bbb 0 0 50px;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 600px;
     margin: 20px;
+
 }
 
 header {
     text-align: center;
-    
-}
- h1.WetterAppTitle {
-    font-size: 1.3rem;
-    padding: 5px;
-    margin: 0;
-  
 }

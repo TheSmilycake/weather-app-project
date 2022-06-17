@@ -15,7 +15,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <h1 className="WetterAppTitle bg-info">WetterApp</h1>
+                <h1 className="WetterAppTitle">WetterApp</h1>
             </header>
             <Search getData={updateWeatherData}/>
             <Result weatherData={weatherData}/>

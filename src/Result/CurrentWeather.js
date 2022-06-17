@@ -1,8 +1,11 @@
 import React from 'react';
 // import reactIcon from './react-brands.svg'
 
-import { WiHumidity} from 'weather-icons-react';
+import { WiHumidity, WiStrongWind,WiSunrise, WiSunset} from 'weather-icons-react';
+
 import WeatherIcon from './WeatherIcon';
+import TimestampToDate from "./TimestampToDate";
+
 export default function CurrentWeather({ current }) {
 
     // if (props.weatherData) {
@@ -16,20 +19,35 @@ export default function CurrentWeather({ current }) {
     // }
     return (
         <div className="CurrentWeather">
-            <div className="row align-items-center">
-                <div className="col-4 p-3">
-                    <WeatherIcon icon={current.weatherIcon}/>
-                </div>
-                <div className="col temp">
-                    {current.temp}℃ | ℃
-                </div>
+            <div className="CurrentWeatherItem">
+                    <WeatherIcon icon={current.weatherIcon} size={100}/>
             </div>
-            <div className="row fs-5">
-                {current.description}
+            <div className="CurrentWeatherItem">
+                <div className="currentTemp">{Math.round(current.temp)}°C</div>
+                <div className="currentDesc">{current.description}</div>
             </div>
-            <div className=" fs-5">
-            <span ><WiHumidity size={80} color="#00ffaa"/></span> {current.humidity}% <br />Wind: {current.wind} km/h
-            </div>
+            <div className="CurrentWeatherItem row">
 
+                <div className="value Humidity">
+                    <div className="HumidityBG" >Humidity</div>
+                    <div><WiHumidity size={50} color="#00CCFF"/></div>
+                    <div className="HumidityBG">{current.humidity}%</div>
+                </div>
+                <div className="value Windspeed">
+                    <div className="WindspeedBG">Windspeed</div>
+                    <div><WiStrongWind size={50} color="#99CC99"/></div>
+                    <div >{current.wind} km/h</div>
+                </div>
+                <div className="value Sunrise">
+                    <div className="SunriseBG">Sunrise</div>
+                    <div><WiSunrise size={50} color="#FFCC00"/></div>
+                    <div className="SunriseBG"><TimestampToDate sun={true} timestamp={current.sunrise}/></div>
+                </div>
+                <div className="value Sunset">
+                    <div className="SunsetBG" >Sunset</div>
+                    <div><WiSunset size={50} color="#FF9999"/></div>
+                    <div className="SunsetBG"><TimestampToDate sun={true} timestamp={current.sunset}/></div>
+                </div>
+            </div>
         </div>);
 }
