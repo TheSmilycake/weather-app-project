@@ -1,14 +1,51 @@
 
 .App {
-
- box-shadow: #bbb 0 0 50px;
+    box-shadow: #bbb 0 0 50px;
     border-radius: 25px;
     width: 100%;
     max-width: 600px;
+    min-width: 300px;
     margin: 20px;
-
 }
 
 header {
     text-align: center;
+    padding: 5px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    margin: 0;
+}
+
+.ResultHeader {
+    padding-bottom: 5px;
+}
+
+.SearchForm {
+    display: flex;
+    justify-content: center;
+}
+
+.Result {
+    padding: 20px;
+}
+
+.CurrentWeather {
+    display: flex;
+}
+
+.currentTemp {
+    font-size: 3rem;
+    margin-right: 20px;
+}
+
+.TimestampToDate {
+    font-size: 1rem;
+}
+.currentDetails div {
+    padding: 3px;
 }

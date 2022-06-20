@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import './Search.css'
 
 export default function Search(props) {
     const [city, setCity] = useState("Solingen");
@@ -15,14 +14,14 @@ export default function Search(props) {
         const apiKey = "cf9b8c1615a0fa6c1dcb29c5a1e4698f";
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=DE&units=${unit}&appid=${apiKey}`;
         axios.get(apiUrl).then(handleResponse).catch(error => {
-            if(error.response) {
+            if (error.response) {
                 console.log(error.response);
             }
         });
     }
 
     function handleResponse(response) {
-console.log(response.data);
+        console.log(response.data);
         const weatherData = {
             "city": response.data.name,
             "timestamp": response.data.dt,
@@ -39,10 +38,10 @@ console.log(response.data);
             },
             "forecast": {
                 "today": {},
-                "nextDays": [{},{},{},{}]
+                "nextDays": [{}, {}, {}, {}]
             }
         }
-    
+
         return props.getData(weatherData);
     }
 
@@ -56,17 +55,3 @@ console.log(response.data);
         </div>
     );
 }
-
-// export default function Search(props) {
-//     const name="Oluwafisayo"
-//     return(
-//         <div>
-//             <form onSubmit={()=>props.getData(name)} >
-//                 <input type="text"/>
-//                 <input type="submit" />
-//             </form>
-//             <button onClick={()=>props.getData(name)} >Click Me</button>
-//         </div>
-//     )
-// }
-
