@@ -36,10 +36,32 @@ export default function Search(props) {
                 "weatherID": response.data.weather[0].id,
                 "weatherIcon": response.data.weather[0].icon
             },
-            "forecast": {
-                "today": {},
-                "nextDays": [{}, {}, {}, {}]
-            }
+            "forecast": [{
+                "timestamp": 1655719259,
+                "icon": "50d",
+                "maxTemp": 18.03,
+                "minTemp": 10.02
+            }, {
+                "timestamp": 1655805659,
+                "icon": "02n",
+                "maxTemp": 19.03,
+                "minTemp": 10
+            }, {
+                "timestamp": 1655892059,
+                "icon": "03d",
+                "maxTemp": 22,
+                "minTemp": 12
+            }, {
+                "timestamp": 1656064859,
+                "icon": "01d",
+                "maxTemp": 21,
+                "minTemp": 18
+            }, {
+                "timestamp": 1656151259,
+                "icon": "04d",
+                "maxTemp": 19,
+                "minTemp": 16
+            }]
         }
 
         return props.getData(weatherData);
