@@ -57,3 +57,11 @@ h2 {
 .currentDetails div {
     padding: 3px;
 }
+
+.unitButton {
+    border: none;
+   text-shadow: 0 0 10px #0e69dc;
+    font-size: 3rem;
+    background-color: transparent;
+    color: #0e69dc;
+}
