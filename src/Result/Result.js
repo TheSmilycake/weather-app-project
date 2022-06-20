@@ -9,7 +9,7 @@ export default function Result({weatherData}) {
 
 
 
-  if(weatherData != "Miau") {
+  if(weatherData !== "Miau") {
       return (
           <div className="Result">
             <div className="ResultHeader">
