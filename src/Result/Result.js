@@ -1,6 +1,7 @@
 import React from 'react';
 import CurrentWeather from './CurrentWeather'
 import TimestampToDate from './TimestampToDate'
+import Forecast from './Forecast'
 
 export default function Result({weatherData}) {
 
@@ -17,6 +18,7 @@ export default function Result({weatherData}) {
                 <TimestampToDate timestamp={weatherData.timestamp}/>
             </div>
             <CurrentWeather current={weatherData.current} />
+              <Forecast forecast={weatherData.forecast}/>
         </div>
       );} else {
       return <div className="Result"/>;

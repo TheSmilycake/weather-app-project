@@ -34,7 +34,13 @@ export default function TimestampToDate(props) {
                 {dateStruct.hour}:{dateStruct.minutes}
             </span>
     );
-    } else {
+    } else if (props.weekdayOnly === true) {
+        return (
+            <span className="TimestampToDate weekdayOnly">
+                {dateStruct.weekday}
+            </span>
+        );
+    }else {
         return (
             <span className="TimestampToDate">
                 {dateStruct.day}.{dateStruct.month}.{dateStruct.year} · {dateStruct.weekday} {dateStruct.hour}:{dateStruct.minutes}
@@ -44,5 +50,6 @@ export default function TimestampToDate(props) {
 }
 
 TimestampToDate.defaultProps = {
-    sun: "false"
+    sun: "false",
+    weekdayOnly: false
 }
