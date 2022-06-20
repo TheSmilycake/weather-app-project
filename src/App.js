@@ -19,6 +19,9 @@ function App() {
             </header>
             <Search getData={updateWeatherData}/>
             <Result weatherData={weatherData}/>
+            <footer>
+                <a href="https://github.com/TheSmilycake/weather-app-project">GitHub Repo</a> Made by Rebecca Wiedau
+            </footer>
         </div>
     );
 }
