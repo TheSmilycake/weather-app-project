@@ -5,8 +5,8 @@ import TimestampToDate from "./TimestampToDate";
 export default function Forecast({forecast}) {
     return (
         <div className="Forecast">
-            {forecast.map((forecastday) =>
-                <div key={forecastday.index} className="forcastday">
+            {forecast.map((forecastday, index) =>
+                <div key={index} className="forcastday">
                     <div>
                         <TimestampToDate timestamp={forecastday.timestamp} weekdayOnly={true}/>
                     </div>
