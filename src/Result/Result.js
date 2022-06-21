@@ -14,10 +14,10 @@ export default function Result({weatherData}) {
       return (
           <div className="Result">
             <div className="ResultHeader">
-                <h2 className="location">{weatherData.CountryCode}, {weatherData.city}</h2>
-                <TimestampToDate timestamp={weatherData.timestamp}/>
+                <h2 className="location">{weatherData.address}</h2>
+                <TimestampToDate timestamp={weatherData.currentWeather.date}/>
             </div>
-            <CurrentWeather current={weatherData.current} />
+            <CurrentWeather currentWeather={weatherData.currentWeather} />
               <Forecast forecast={weatherData.forecast}/>
         </div>
       );} else {

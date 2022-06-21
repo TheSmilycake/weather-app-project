@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function TimestampToDate(props) {
-    const date = new Date(props.timestamp * 1000);
+    const date = props.timestamp;
 
     function twoDigitFormat(number) {
         if (number < 10) {

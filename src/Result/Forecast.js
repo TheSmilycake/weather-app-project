@@ -8,9 +8,9 @@ export default function Forecast({forecast}) {
             {forecast.map((forecastday, index) =>
                 <div key={index} className="forcastday">
                     <div>
-                        <TimestampToDate timestamp={forecastday.timestamp} weekdayOnly={true}/>
+                        <TimestampToDate timestamp={forecastday.date} weekdayOnly={true}/>
                     </div>
-                    <div><WeatherIcon icon={forecastday.icon} size={30}/></div>
+                    <div><WeatherIcon icon="01d" size={30}/></div>
                     <div>
                         <span className="maxTemp">{forecastday.maxTemp}</span>|<span className="minTemp">{forecastday.minTemp}</span>
                     </div>
