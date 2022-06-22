@@ -2,13 +2,9 @@ import React from 'react';
 import TimestampToDate from './TimestampToDate'
 import Forecast from './Forecast'
 import WeatherIcon from "./WeatherIcon";
+import ConditionString from "./ConditionString";
 
 export default function Result({weatherData}) {
-
-
-      
-
-
 
   if(weatherData !== "Miau") {
       return (
@@ -23,7 +19,7 @@ export default function Result({weatherData}) {
                   </div>
                   <div className="currentTemp">{Math.round(weatherData.currentTemp)}°C</div>
                   <div className="currentDetails">
-                      {/*<div className="currentDesc">{currentTemp.description}</div>*/}
+                      <div className="currentDesc"><ConditionString conditions={weatherData.forecast[0].conditions}/></div>
                       <div className="currentHumidity" >Luftfeuchtigkeit: {Math.round(weatherData.currentHumidity)}%</div>
                       <div className="currentWindspeed">Windgeschwindigkeit: {Math.round(weatherData.currentWindspeed)} km/h</div>
                   </div>

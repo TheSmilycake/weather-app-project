@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherIcon from './WeatherIcon';
 import TimestampToDate from "./TimestampToDate";
+import ConditionString from "./ConditionString";
 
 export default function Forecast({forecast}) {
     console.log(forecast);
@@ -15,6 +16,7 @@ export default function Forecast({forecast}) {
                     <div>
                         <span className="maxTemp">{forecastday.maxTemp}</span>|<span className="minTemp">{forecastday.minTemp}</span>
                     </div>
+                    <div><ConditionString conditions={forecastday.conditions}/></div>
                 </div>
             )}
         </div>);
