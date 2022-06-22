@@ -4,19 +4,26 @@ import TimestampToDate from "./TimestampToDate";
 import ConditionString from "./ConditionString";
 
 export default function Forecast({forecast}) {
-    console.log(forecast);
     return (
         <div className="Forecast">
-            {forecast.slice(1).map((forecastday, index) =>
-                <div key={index} className="forcastday">
-                    <div>
-                        <TimestampToDate timestamp={forecastday.date} weekdayOnly={true}/>
+            {forecast.slice(1).map((forecastDay, index) =>
+                <div key={index} className="forecastDay">
+                    <div className="forecastDay-icon"><WeatherIcon icon="01d" size={45}/>
                     </div>
-                    <div><WeatherIcon icon="01d" size={30}/></div>
-                    <div>
-                        <span className="maxTemp">{forecastday.maxTemp}°C</span> |<span className="minTemp">{forecastday.minTemp}°C</span>
+                    <div className="forecastDay-datails">
+                        <div>
+                            <TimestampToDate timestamp={forecastDay.date} weekdayOnly={true}/>
+                        </div>
+                        <div className="forecastDay-values">
+                            <span className="forecastDay-temp">
+                                <span className="maxTemp">{forecastDay.maxTemp}°C</span> |<span
+                                className="minTemp">{forecastDay.minTemp}°C</span>
+                            </span>
+                            <span className="forecastDay-desc">
+                                <ConditionString conditions={forecastDay.conditions}/>
+                            </span>
+                        </div>
                     </div>
-                    <div><ConditionString conditions={forecastday.conditions}/></div>
                 </div>
             )}
         </div>);
