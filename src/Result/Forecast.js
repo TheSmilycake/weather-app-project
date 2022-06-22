@@ -3,9 +3,10 @@ import WeatherIcon from './WeatherIcon';
 import TimestampToDate from "./TimestampToDate";
 
 export default function Forecast({forecast}) {
+    console.log(forecast);
     return (
         <div className="Forecast">
-            {forecast.map((forecastday, index) =>
+            {forecast.slice(1).map((forecastday, index) =>
                 <div key={index} className="forcastday">
                     <div>
                         <TimestampToDate timestamp={forecastday.date} weekdayOnly={true}/>
