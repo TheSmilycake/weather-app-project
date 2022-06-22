@@ -1,6 +1,5 @@
 import React from 'react';
 import WeatherIcon from './WeatherIcon';
-import UnitConverter from "./UnitConverter";
 
 export default function CurrentWeather({ currentWeather }) {
     return (
@@ -8,11 +7,11 @@ export default function CurrentWeather({ currentWeather }) {
             <div className="currentWeatherIcon">
                     <WeatherIcon icon="01d" size={60}/>
             </div>
-            <div className="currentTemp"><UnitConverter temp={currentWeather.temp}/></div>
+            <div className="currentTemp">{Math.round(currentWeather.temp)}°C</div>
             <div className="currentDetails">
                 {/*<div className="currentDesc">{currentTemp.description}</div>*/}
-                <div className="currentHumidity" >Luftfeuchtigkeit: {currentWeather.humidity}%</div>
-                <div className="currentWindspeed">Windgeschwindigkeit: {currentWeather.windspeed} km/h</div>
+                <div className="currentHumidity" >Luftfeuchtigkeit: {Math.round(currentWeather.humidity)}%</div>
+                <div className="currentWindspeed">Windgeschwindigkeit: {Math.round(currentWeather.windspeed)} km/h</div>
             </div>
         </div>);
 }
