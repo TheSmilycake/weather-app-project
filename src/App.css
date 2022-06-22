@@ -3,7 +3,7 @@
     box-shadow: #bbb 0 0 50px;
     border-radius: 25px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 20px auto;
 }
 @media (max-width: 669px) {
