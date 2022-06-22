@@ -17,11 +17,11 @@ export default function Result({weatherData}) {
                   <div className="currentWeatherIcon">
                       <WeatherIcon icon="01d" size={60}/>
                   </div>
-                  <div className="currentTemp">{Math.round(weatherData.currentTemp)}°C</div>
+                  <div className="currentTemp">{weatherData.currentTemp}°C</div>
                   <div className="currentDetails">
                       <div className="currentDesc"><ConditionString conditions={weatherData.forecast[0].conditions}/></div>
-                      <div className="currentHumidity" >Luftfeuchtigkeit: {Math.round(weatherData.currentHumidity)}%</div>
-                      <div className="currentWindspeed">Windgeschwindigkeit: {Math.round(weatherData.currentWindspeed)} km/h</div>
+                      <div className="currentHumidity" >Luftfeuchtigkeit: {weatherData.currentHumidity}%</div>
+                      <div className="currentWindspeed">Windgeschwindigkeit: {weatherData.currentWindspeed} km/h</div>
                   </div>
               </div>
               <Forecast forecast={weatherData.forecast}/>

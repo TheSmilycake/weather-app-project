@@ -14,7 +14,7 @@ export default function Forecast({forecast}) {
                     </div>
                     <div><WeatherIcon icon="01d" size={30}/></div>
                     <div>
-                        <span className="maxTemp">{forecastday.maxTemp}</span>|<span className="minTemp">{forecastday.minTemp}</span>
+                        <span className="maxTemp">{forecastday.maxTemp}°C</span> |<span className="minTemp">{forecastday.minTemp}°C</span>
                     </div>
                     <div><ConditionString conditions={forecastday.conditions}/></div>
                 </div>

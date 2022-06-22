@@ -30,10 +30,10 @@ export default function Search(props) {
             lat: responseLocation.latitude,
             long: responseLocation.longitude,
             timezone: responseLocation.tz,
-            currentTemp: responseLocation.currentConditions.temp,
-            currentWindspeed: responseLocation.currentConditions.wspd,
+            currentTemp: Math.round(responseLocation.currentConditions.temp),
+            currentWindspeed: Math.round(responseLocation.currentConditions.wspd),
             currentDate: new Date(responseLocation.currentConditions.datetime),
-            currentHumidity: responseLocation.currentConditions.humidity,
+            currentHumidity: Math.round(responseLocation.currentConditions.humidity),
             forecast: []
         }
 
@@ -41,10 +41,10 @@ export default function Search(props) {
             const conditionsArray = value.conditions.split(',');
             let day = {
                 date: new Date(value.datetimeStr),
-                minTemp: value.mint,
-                humidity: value.humidity,
-                maxTemp: value.maxt,
-                windspeed: value.wspd,
+                minTemp: Math.round(value.mint),
+                humidity: Math.round(value.humidity),
+                maxTemp: Math.round(value.maxt),
+                windspeed: Math.round(value.wspd),
                 conditions: conditionsArray.map(condition => {
                     return condition.trim();
                 })
