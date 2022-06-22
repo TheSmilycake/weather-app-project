@@ -16,9 +16,10 @@ export default function Search(props) {
         const apiKey = "2T7PDGA7TM2FP45LV9XKW6J8M";
         let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${city}&aggregateHours=${aggregateHours}&forecastDays=${forecastDays}&lang=id&unitGroup=${unitGroup}&shortColumnNames=false&contentType=json&key=${apiKey}`;
         axios.get(apiUrl).then(handleResponse).catch(error => {
-            if (error.response) {
+            if(error.response) {
                 console.log(error.response);
             }
+            alert("Wrong Input");
         });
     }
 
