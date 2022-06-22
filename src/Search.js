@@ -11,7 +11,7 @@ export default function Search(props) {
     function searchCity(event) {
         event.preventDefault();
         const unitGroup = "metric";
-        const forecastDays = 5;
+        const forecastDays = 7;
         const aggregateHours = 24;
         const apiKey = "2T7PDGA7TM2FP45LV9XKW6J8M";
         let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${city}&aggregateHours=${aggregateHours}&forecastDays=${forecastDays}&lang=id&unitGroup=${unitGroup}&shortColumnNames=false&contentType=json&key=${apiKey}`;
@@ -23,9 +23,7 @@ export default function Search(props) {
     }
 
     function handleResponse(response) {
-        // console.log(response.data);
         const responseLocation = Object.values(response.data.locations)[0];
-        console.log(responseLocation);
         const weatherData = {
             city: responseLocation.id,
             address: responseLocation.address,
@@ -38,21 +36,24 @@ export default function Search(props) {
                 date: new Date(responseLocation.currentConditions.datetime),
                 humidity: responseLocation.currentConditions.humidity
             },
-            forecast: []
+            forecast:[]
         }
 
         responseLocation.values.forEach((value) => {
+            const conditionsArray = value.conditions.split(',');
             let day = {
                 date: new Date(value.datetimeStr),
                 minTemp: value.mint,
                 humidity: value.humidity,
                 maxTemp: value.maxt,
                 windspeed: value.wspd,
-                conditions: value.conditions
+                conditions: conditionsArray.map(condition => {
+                    return condition.trim();
+                })
             }
             weatherData.forecast.push(day)
         })
-        console.log(weatherData);
+
         return props.getData(weatherData);
     }
 
