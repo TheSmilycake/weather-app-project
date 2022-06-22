@@ -1,7 +1,7 @@
 import React from 'react';
-import CurrentWeather from './CurrentWeather'
 import TimestampToDate from './TimestampToDate'
 import Forecast from './Forecast'
+import WeatherIcon from "./WeatherIcon";
 
 export default function Result({weatherData}) {
 
@@ -15,9 +15,19 @@ export default function Result({weatherData}) {
           <div className="Result">
             <div className="ResultHeader">
                 <h2 className="location">{weatherData.address}</h2>
-                <TimestampToDate timestamp={weatherData.currentWeather.date}/>
+                <TimestampToDate timestamp={weatherData.currentDate}/>
             </div>
-            <CurrentWeather currentWeather={weatherData.currentWeather} />
+              <div className="CurrentWeather">
+                  <div className="currentWeatherIcon">
+                      <WeatherIcon icon="01d" size={60}/>
+                  </div>
+                  <div className="currentTemp">{Math.round(weatherData.currentTemp)}°C</div>
+                  <div className="currentDetails">
+                      {/*<div className="currentDesc">{currentTemp.description}</div>*/}
+                      <div className="currentHumidity" >Luftfeuchtigkeit: {Math.round(weatherData.currentHumidity)}%</div>
+                      <div className="currentWindspeed">Windgeschwindigkeit: {Math.round(weatherData.currentWindspeed)} km/h</div>
+                  </div>
+              </div>
               <Forecast forecast={weatherData.forecast}/>
         </div>
       );} else {

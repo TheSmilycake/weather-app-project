@@ -30,13 +30,11 @@ export default function Search(props) {
             lat: responseLocation.latitude,
             long: responseLocation.longitude,
             timezone: responseLocation.tz,
-            currentWeather: {
-                temp: responseLocation.currentConditions.temp,
-                windspeed: responseLocation.currentConditions.wspd,
-                date: new Date(responseLocation.currentConditions.datetime),
-                humidity: responseLocation.currentConditions.humidity
-            },
-            forecast:[]
+            currentTemp: responseLocation.currentConditions.temp,
+            currentWindspeed: responseLocation.currentConditions.wspd,
+            currentDate: new Date(responseLocation.currentConditions.datetime),
+            currentHumidity: responseLocation.currentConditions.humidity,
+            forecast: []
         }
 
         responseLocation.values.forEach((value) => {
