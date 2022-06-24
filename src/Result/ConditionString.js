@@ -49,11 +49,15 @@ export default function ConditionString(props) {
 
     let conditionText = '';
 
-    props.conditions.forEach((conditon, index, array) => {
-        conditionText += conditionMap[conditon];
-        if (index < array.length - 1) {
-            conditionText += ', ';
-        }
+    props.conditions.forEach((condition, index, array) => {
+        if(conditionMap[condition]) {
+            conditionText += conditionMap[condition];
+        } else {
+                conditionText = 'Unbekannt';
+            }
+            if (index < array.length - 1) {
+                conditionText += ', ';
+            }
     })
 
     return (
