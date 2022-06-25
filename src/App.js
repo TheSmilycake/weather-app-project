@@ -7,7 +7,7 @@ import Result  from './Result/Result'
 
 
 function App() {
-    const [weatherData, setWeatherData] = useState("Miau");
+    const [weatherData, setWeatherData] = useState("NoSearch");
     function updateWeatherData(apiResponse) {
         setWeatherData(apiResponse)
     }

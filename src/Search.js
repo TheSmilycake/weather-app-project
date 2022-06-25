@@ -10,37 +10,48 @@ export default function Search(props) {
 
     function searchCity(event) {
         event.preventDefault();
-        const unit = "metric";
-        const apiKey = "cf9b8c1615a0fa6c1dcb29c5a1e4698f";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=DE&units=${unit}&appid=${apiKey}`;
+        const unitGroup = "metric";
+        const forecastDays = 7;
+        const aggregateHours = 24;
+        const apiKey = "2T7PDGA7TM2FP45LV9XKW6J8M";
+        let apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${city}&aggregateHours=${aggregateHours}&forecastDays=${forecastDays}&lang=id&unitGroup=${unitGroup}&shortColumnNames=false&contentType=json&key=${apiKey}`;
         axios.get(apiUrl).then(handleResponse).catch(error => {
-            if (error.response) {
+            if(error.response) {
                 console.log(error.response);
             }
+            alert("Wrong Input");
         });
     }
 
     function handleResponse(response) {
-        console.log(response.data);
+        const responseLocation = Object.values(response.data.locations)[0];
         const weatherData = {
-            "city": response.data.name,
-            "timestamp": response.data.dt,
-            "CountryCode": response.data.sys.country,
-            "current": {
-                "sunrise": response.data.sys.sunrise,
-                "sunset": response.data.sys.sunset,
-                "description": response.data.weather[0].description,
-                "temp": response.data.main.temp,
-                "humidity": response.data.main.humidity,
-                "wind": Math.round(response.data.wind.speed * 3.6),
-                "weatherID": response.data.weather[0].id,
-                "weatherIcon": response.data.weather[0].icon
-            },
-            "forecast": {
-                "today": {},
-                "nextDays": [{}, {}, {}, {}]
-            }
+            city: responseLocation.id,
+            address: responseLocation.address,
+            lat: responseLocation.latitude,
+            long: responseLocation.longitude,
+            timezone: responseLocation.tz,
+            currentTemp: Math.round(responseLocation.currentConditions.temp),
+            currentWindspeed: Math.round(responseLocation.currentConditions.wspd),
+            currentDate: new Date(responseLocation.currentConditions.datetime),
+            currentHumidity: Math.round(responseLocation.currentConditions.humidity),
+            forecast: []
         }
+
+        responseLocation.values.forEach((value) => {
+            const conditionsArray = value.conditions.split(',');
+            let day = {
+                date: new Date(value.datetimeStr),
+                minTemp: Math.round(value.mint),
+                humidity: Math.round(value.humidity),
+                maxTemp: Math.round(value.maxt),
+                windspeed: Math.round(value.wspd),
+                conditions: conditionsArray.map(condition => {
+                    return condition.trim();
+                })
+            }
+            weatherData.forecast.push(day)
+        })
 
         return props.getData(weatherData);
     }

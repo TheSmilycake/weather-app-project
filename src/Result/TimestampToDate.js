@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function TimestampToDate(props) {
-    const date = new Date(props.timestamp * 1000);
+    const date = props.timestamp;
 
     function twoDigitFormat(number) {
         if (number < 10) {
@@ -33,16 +33,22 @@ export default function TimestampToDate(props) {
             <span className="TimestampToDate SunTime">
                 {dateStruct.hour}:{dateStruct.minutes}
             </span>
-    );
+        );
+    } else if (props.weekdayOnly === true) {
+        return (
+            <span className="TimestampToDate weekdayOnly">
+                {dateStruct.weekday} · {dateStruct.day}.{dateStruct.month}
+            </span>
+        );
     } else {
         return (
             <span className="TimestampToDate">
                 {dateStruct.day}.{dateStruct.month}.{dateStruct.year} · {dateStruct.weekday} {dateStruct.hour}:{dateStruct.minutes}
             </span>
         );
-}
+    }
 }
 
 TimestampToDate.defaultProps = {
-    sun: "false"
+    weekdayOnly: false
 }
