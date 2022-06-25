@@ -8,7 +8,7 @@ export default function Forecast({forecast}) {
         <div className="Forecast">
             {forecast.slice(1).map((forecastDay, index) =>
                 <div key={index} className="forecastDay">
-                    <div className="forecastDay-icon"><WeatherIcon icon="01d" size={45}/>
+                    <div className="forecastDay-icon"><WeatherIcon conditions={forecastDay.conditions} size={45}/>
                     </div>
                     <div className="forecastDay-datails">
                         <div>

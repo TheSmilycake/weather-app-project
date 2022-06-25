@@ -1,47 +1,105 @@
 import React from 'react';
 import {
-    WiDaySunny, WiNightClear, WiDayCloudy, WiCloud, WiNA, WiNightAltCloudy, WiCloudy, WiRain, WiDayShowers, WiNightAltShowers, WiThunderstorm, WiFog, WiSnow
+    WiCloudy,
+WiCloudyGusts,
+WiDaySunny,
+WiDaySunnyOvercast,
+WiDust,
+WiHail,
+WiLightning,
+WiNA,
+WiRain,
+WiRainMix,
+WiSandstorm,
+WiSmoke,
+WiSnow,
+WiSnowflakeCold,
+WiStormShowers,
+WiThunderstorm,
+WiTornado
 } from 'weather-icons-react';
 
 export default function WeatherIcon(props) {
-    const size = props.size ? props.size : 100;
-    const dayColor = "#CC6600";
-    const nightColor = "#000066";
-    switch (props.icon) {
-        case "01d": return <WiDaySunny size={size} color={dayColor} />;
-        case "02d": return <WiDayCloudy size={size} color={dayColor} />;
-        case "01n": return <WiNightClear size={size} color={nightColor} />;
-        case "02n": return <WiNightAltCloudy size={size} color={nightColor} />;
-        case "03d": return <WiCloud size={size} color={dayColor} />;
-        case "03n": return <WiCloud size={size} color={nightColor} />;
-        case "04d": return <WiCloudy size={size} color={dayColor} />;
-        case "04n": return <WiCloudy size={size} color={nightColor} />;
-        case "09d": return <WiRain size={size} color={dayColor} />;
-        case "09n": return <WiRain size={size} color={nightColor} />;
-        case "10d": return <WiDayShowers size={size} color={dayColor} />;
-        case "10n": return <WiNightAltShowers size={size} color={nightColor} />;
-        case "11d": return <WiThunderstorm size={size} color={dayColor} />;
-        case "11n": return <WiThunderstorm size={size} color={nightColor} />;
-        case "13d": return <WiSnow size={size} color={dayColor} />;
-        case "13n": return <WiSnow size={size} color={nightColor} />;
-        case "50d": return <WiFog size={size} color={dayColor} />;
-        case "50n": return <WiFog size={size} color={nightColor} />;
-        default: return <WiNA size={size} color={"black"} />;
+
+    const conditionMap = {
+        'type_1': 'WiSnow',
+        'type_2': 'WiRain',
+        'type_3': 'WiRain',
+        'type_4': 'WiRain',
+        'type_5': 'WiRain',
+        'type_6': 'WiRain',
+        'type_7': 'WiSandstorm',
+        'type_8': 'WiDust',
+        'type_9': 'WiRainMix',
+        'type_10': 'WiRainMix',
+        'type_11': 'WiRainMix',
+        'type_12': 'WiDust',
+        'type_13': 'WiRainMix',
+        'type_14': 'WiRainMix',
+        'type_15': 'WiTornado',
+        'type_16': 'WiHail',
+        'type_17': 'WiSnowflakeCold',
+        'type_18': 'WiLightning',
+        'type_19': 'WiDust',
+        'type_20': 'WiRain',
+        'type_21': 'WiRain',
+        'type_22': 'WiRainMix',
+        'type_23': 'WiRainMix',
+        'type_24': 'WiRain',
+        'type_25': 'WiRain',
+        'type_26': 'WiRain',
+        'type_27': 'WiDaySunnyOvercast',
+        'type_28': 'WiCloudy',
+        'type_29': 'WiNA',
+        'type_30': 'WiSmoke',
+        'type_31': 'WiSnow',
+        'type_32': 'WiRainMix',
+        'type_33': 'WiSnow',
+        'type_34': 'WiSnow',
+        'type_35': 'WiSnow',
+        'type_36': 'WiCloudyGusts',
+        'type_37': 'WiStormShowers',
+        'type_38': 'WiThunderstorm',
+        'type_39': 'WiSnow',
+        'type_40': 'WiHail',
+        'type_41': 'WiCloudy',
+        'type_42': 'WiDaySunnyOvercast',
+        'type_43': 'WiDaySunny'
+    };
+    
+    let setIcon = 'Unbekannt';
+    
+    if(conditionMap[props.conditions[0]]) {
+            setIcon = conditionMap[props.conditions[0]];
+        } else {
+            setIcon = 'WiNA';
+         }
+        
+    switch (setIcon) {
+        case "WiCloudy": return <WiCloudy size={props.size} color={props.color} />;
+        case "WiCloudyGusts": return <WiCloudyGusts size={props.size} color={props.color} />;
+        case "WiDaySunny": return <WiDaySunny size={props.size} color={props.color} />;
+        case "WiDaySunnyOvercast": return <WiDaySunnyOvercast size={props.size} color={props.color} />;
+        case "WiDust": return <WiDust size={props.size} color={props.color} />;
+        case "WiHail": return <WiHail size={props.size} color={props.color} />;
+        case "WiLightning": return <WiLightning size={props.size} color={props.color} />;
+        case "WiNA": return <WiNA size={props.size} color={props.color} />;
+        case "WiRain": return <WiRain size={props.size} color={props.color} />;
+        case "WiRainMix": return <WiRainMix size={props.size} color={props.color} />;
+        case "WiSandstorm": return <WiSandstorm size={props.size} color={props.color} />;
+        case "WiSmoke": return <WiSmoke size={props.size} color={props.color} />;
+        case "WiSnow": return <WiSnow size={props.size} color={props.color} />;
+        case "WiSnowflakeCold": return <WiSnowflakeCold size={props.size} color={props.color} />;
+        case "WiStormShowers": return <WiStormShowers size={props.size} color={props.color} />;
+        case "WiThunderstorm": return <WiThunderstorm size={props.size} color={props.color} />;
+        case "WiTornado": return <WiTornado size={props.size} color={props.color} />;
+        default: return <WiNA size={props.size} color={props.color} />;
     }
 
 }
-/*
-openweather
-01d.png 	01n.png 	clear sky		WiDaySunny, WiNightClear
-02d.png 	02n.png 	few clouds		WiDayCloudy, WiNightAltCloudy
-03d.png 	03n.png 	scattered clouds	WiCloud,
-04d.png 	04n.png 	broken clouds		WiCloudy,
-09d.png 	09n.png 	shower rain		WiRain,
-10d.png 	10n.png 	rain			WiDayShowers, WiNightAltShowers
-11d.png 	11n.png 	thunderstorm		WiThunderstorm,
-13d.png 	13n.png 	snow			WiSnow,
-50d.png 	50n.png 	mist			WiFog
 
-nothing WiNA
-
-*/
+WeatherIcon.defaultProps = {
+    conditions: ['unknown'],
+    size: 100,
+    color: "#000"
+}

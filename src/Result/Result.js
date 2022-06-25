@@ -16,7 +16,7 @@ export default function Result({weatherData}) {
                 </div>
                 <div className="CurrentWeather">
                     <div className="currentTemp">
-                        <WeatherIcon icon="01d" size={54}/> {weatherData.currentTemp}°C
+                        <WeatherIcon conditions={weatherData.forecast[0].conditions} size={54}/> {weatherData.currentTemp}°C
                     </div>
                     <div className="currentDetails">
                         <div className="today-forecast-temp"><span
